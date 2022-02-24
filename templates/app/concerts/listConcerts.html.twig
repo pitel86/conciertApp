@@ -1,0 +1,19 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    <h2>Listado de Concerts </h2>
+    <div class="row">
+        {% for concert in concerts %}
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="/images/concert{{random(1, 4)}}.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{concert.groupName}}</h5>
+                        <p class="card-text">{{concert.description}}</p>
+                        <a href="{{ path("showConcert",{"id":concert.id})}}" class="btn btn-primary">Más Info</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block title %}Listado de Concerts{% endblock %}

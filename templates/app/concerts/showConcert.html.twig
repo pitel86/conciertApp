@@ -1,0 +1,24 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col text-center"><h2>{{concert.groupName}}</h2></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="/images/concert{{random(1, 4)}}.jpg">
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">{{concert.description}}</div>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <a href="{{ path("addToMyConcerts",{"id":concert.id})}}" class="btn btn-primary">Iré</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

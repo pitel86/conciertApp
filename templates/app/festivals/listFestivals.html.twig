@@ -1,0 +1,19 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    <h2>Listado de Festivals </h2>
+    <div class="row">
+        {% for festival in festivals %}
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="/images/festival{{random(1, 4)}}.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{festival.name}}</h5>
+                        <p class="card-text">{{festival.description}}</p>
+                        <a href="{{ path("showFestival",{"id":festival.id})}}" class="btn btn-primary">Más Info</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block title %}Listado de Festivals{% endblock %}
