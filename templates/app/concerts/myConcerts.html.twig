@@ -1,12 +1,6 @@
 {% extends 'app/base.html.twig' %}
 {% block body %}
-    <h2>Listado de Conciertos </h2>
-    <div class="row">
-    {{ form_start(concertFilter) }}
-        {{ form_widget(concertFilter) }}
-        <button class="btn btn-lg btn-primary" type="submit">Buscar</button>
-    {{ form_end(concertFilter) }}
-    </div>
+    <h2>Mis Conciertos </h2>
     <div class="row">
         {% for concert in concerts %}
             <div class="col-md-4">

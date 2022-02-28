@@ -1,12 +1,6 @@
 {% extends 'app/base.html.twig' %}
 {% block body %}
-    <h2>Listado de Festivales </h2>
-    <div class="row">
-    {{ form_start(festivalFilter) }}
-        {{ form_widget(festivalFilter) }}
-        <button class="btn btn-lg btn-primary" type="submit">Buscar</button>
-    {{ form_end(festivalFilter) }}
-    </div>
+    <h2>Mis Festivales </h2>
     <div class="row">
         {% for festival in festivals %}
             <div class="col-md-4">

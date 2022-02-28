@@ -19,14 +19,14 @@ class ConcertRepository extends ServiceEntityRepository
         parent::__construct($registry, Concert::class);
     }
 
-    // /**
-    //  * @return Concert[] Returns an array of Concert objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return Concert[] Returns an array of Concert objects
+    */    
+    public function findByCategory($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->leftJoin('c.categories', 'cat')
+            ->andWhere('cat.id = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
@@ -34,7 +34,7 @@ class ConcertRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Concert

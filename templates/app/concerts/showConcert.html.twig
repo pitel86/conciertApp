@@ -5,18 +5,28 @@
             <div class="col text-center"><h2>{{concert.groupName}}</h2></div>
         </div>
         <div class="row">
-            <div class="col">
-                <img src="/images/concert{{random(1, 4)}}.jpg">
+            <div class="col-md-6">
+                <img src="/images/concert{{random(1, 4)}}.jpg" class="img-fluid" alt>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <div class="row">
-                    <div class="col">{{concert.description}}</div>
+                    <div class="col-12">Descripcion:{{concert.description}}</div>
+                    <div class="col-12">Fecha:{{concert.date|date('d-m-Y')}}</div>
+                    <div class="col-12">Precio:{{concert.price}}</div>
+                    <div class="col-12">Ciudad:{{concert.city}}</div>
+                    <div class="col-12">Lugar:{{concert.place}}</div>
+                    <div class="col-12">Link:<a href="{{concert.link}}">Aquí</a></div>
                 </div>
             </div>
             </div>
-            <div class="col">
+            <div class="col-12">
                 <div class="row">
+                    {% if is_granted('ROLE_USER')%}
                     <a href="{{ path("addToMyConcerts",{"id":concert.id})}}" class="btn btn-primary">Iré</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN')%}
+                    <a href="{{ path("editConcert",{"id":concert.id})}}" class="btn btn-primary">Editar Concierto</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

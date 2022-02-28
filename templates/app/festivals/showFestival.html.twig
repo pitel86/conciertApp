@@ -5,17 +5,28 @@
             <div class="col text-center"><h2>{{festival.name}}</h2></div>
         </div>
         <div class="row">
-            <div class="col">
-                <img src="/images/festival{{random(1, 4)}}.jpg">
+            <div class="col-md-6">
+                <img src="/images/festival{{random(1, 4)}}.jpg" class="img-fluid" alt>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <div class="row">
-                    <div class="col">{{festival.description}}</div>
+                    <div class="col-12">Descripcion:{{festival.description}}</div>
+                    <div class="col-12">Fecha Inicio:{{festival.dateIni|date('d-m-Y')}}</div>
+                    <div class="col-12">Fecha Fin:{{festival.dateFin|date('d-m-Y')}}</div>
+                    <div class="col-12">Precio:{{festival.price}}</div>
+                    <div class="col-12">Ciudad:{{festival.city}}</div>
+                    <div class="col-12">Lugar:{{festival.place}}</div>
+                    <div class="col-12">Link:<a href="{{festival.link}}">Aquí</a></div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-12">
                 <div class="row">
+                    {% if is_granted('ROLE_USER')%}
                     <a href="{{ path("addToMyFests",{"id":festival.id})}}" class="btn btn-primary">Iré</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN')%}
+                    <a href="{{ path("editFestival",{"id":festival.id})}}" class="btn btn-primary">Editar Festival</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

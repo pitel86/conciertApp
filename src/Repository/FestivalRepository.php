@@ -19,14 +19,15 @@ class FestivalRepository extends ServiceEntityRepository
         parent::__construct($registry, Festival::class);
     }
 
-    // /**
-    //  * @return Festival[] Returns an array of Festival objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return Festival[] Returns an array of Festival objects
+    */
+    
+    public function findByCategory($value)
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
+            ->leftJoin('f.categories', 'c')
+            ->andWhere('c.id = :val')
             ->setParameter('val', $value)
             ->orderBy('f.id', 'ASC')
             ->setMaxResults(10)
@@ -34,7 +35,7 @@ class FestivalRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Festival

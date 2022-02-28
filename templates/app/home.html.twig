@@ -1,0 +1,49 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="/images/concert{{random(1, 4)}}.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Ver Conciertos</h5>
+                        <p class="card-text">Descubre los últimos conciertos</p>
+                        <a href="{{ path("listConcert")}}" class="btn btn-primary">Más Info</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="/images/festival{{random(1, 4)}}.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Ver Festivales</h5>
+                        <p class="card-text">Descubre los últimos festivales</p>
+                        <a href="{{ path("listFestival")}}" class="btn btn-primary">Más Info</a>
+                    </div>
+                </div>
+            </div>
+            {% if is_granted('ROLE_USER')%}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="/images/concert{{random(1, 4)}}.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Ver tus Conciertos</h5>
+                        <p class="card-text">Aquí tienes los conciertos a los que irás</p>
+                        <a href="{{ path("myConcerts")}}" class="btn btn-primary">Más Info</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="/images/festival{{random(1, 4)}}.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Ver tus Festivales</h5>
+                        <p class="card-text">Aquí tienes los festivales a los que irás</p>
+                        <a href="{{ path("myFestivals")}}" class="btn btn-primary">Más Info</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
